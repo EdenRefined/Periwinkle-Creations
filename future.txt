@@ -1,0 +1,5 @@
+Future plans for app,
+
+ - calendar
+ - tracking
+ - amounts of each
