@@ -1,0 +1,26 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="path_to/style.css">
+</head>
+<body>
+H1
+	{
+	font-size:19px;
+	cursor:default;
+	font-weight:bold;
+	font-style:italic;
+	background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmbGinEbw3K8AFnoC368k0eXDdwEaYsrgl7lQzpACTnlZngzTTlQ, https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmbGinEbw3K8AFnoC368k0eXDdwEaYsrgl7lQzpACTnlZngzTTlQ);
+	background-attachment:scroll;
+	text-align:center;
+	vertical-align:text-top;
+	}
+body
+	{
+	font-size:14px;
+	cursor:default;
+	background-attachment:scroll;
+	text-align:center;
+	vertical-align:middle;
+	}
+</body>
+</html>
