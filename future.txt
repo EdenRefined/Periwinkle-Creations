@@ -1,4 +1,4 @@
-Future plans for app,
+Future plans:
 
  - calendar
  - tracking
