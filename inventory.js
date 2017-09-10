@@ -22,21 +22,19 @@ var inventoryList = {
         var totalInventory = this.inventory.length;
         var availableInventory = 0;
 
-        for (var i = 0; i < totalInventory; i++) {
-            if (this.inventory[i].available === true) {
+        this.inventory.forEach(function(element) {
+            if (inventory.available === true) {
                 availableInventory++;
             }
-        }
+        });
 
-        if (availableInventory === totalInventory) {
-            for (var i = 0; i < totalInventory; i++) {
-                this.inventory[i].available = false;
+        this.inventory.forEach(function(element) {
+            if (availableInventory === totalInventory) {
+                inventory.available = false;
+            } else {
+                inventory.available = true;
             }
-        } else {
-            for (var i = 0; i < totalInventory; i++) {
-                this.inventory[i].available = true;
-            }
-        }
+        });
     }
 };
 
@@ -78,27 +76,40 @@ var view = {
     displayCurrentInventory: function() {
         var inventoryUl = document.querySelectory('ul');
         inventoryUl.innerHTML = '';
-        for (var i = 0; i < inventoryList.element.length; i++) {
-            var inventoryLi = document.createElement('li');
-            var inventory = inventoryList.element[i];
-            var inventoryTextWithCompletion = '';
-            
-            if (inventory.completed === true) {
-                inventoryTextWithCompletion = '(Unavailable)' + inventory.inventoryText;
-            } else {
-                inventoryTextWithCompletion = '' + inventory.inventoryText;
-            }
-            
-            inventoryLi.textContent = inventoryTextWithCompletion;
-            inventoryUl.appendChild(inventoryLi);
+       
+       inventoryList.inventory.forEach(function(element, position) {
+        var inventoryLi = document.createElement('li');
+        var inventoryTextWithCompletion = '';
+        
+        if (inventory.completed === true) {
+            inventoryTextWithCompletion = '(Unavailable)' + inventory.inventoryText;
+        } else {
+            inventoryTextWithCompletion = '' + inventory.inventoryText;
         }
+        inventoryLi.id = position;
+        inventoryLi.textContent = inventoryTextWithCompletion;
+        inventoryLi.appendChild(this.createDeleteButton());
+        inventoryUl.appendChild(inventoryLi);
+        
+       }, this);
     },
     createDeleteButton: function() {
         var deleteButton = document.createElement();
         deleteButton.textContent = 'Delete';
         deleteButton.className = 'deleteButton';
         return deleteButton;
+    },
+    setUpEventListeners: function () {
+        var inventoryUl = document.querySelector('ul');
+
+        inventoryUl.addEventListener('click', function(event) {
+            var elementClicked = event.target;
+
+            if (elementClicked.className === 'deleteButton') {
+                handlers.deleteInventory(parseInt(elementClicked.parentNode.id));
+            }
+        });
     }
 };
 
-
+view.setUpEventListeners();
